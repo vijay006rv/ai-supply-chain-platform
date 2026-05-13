@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import Layout from "./layout/Layout";
 
 import Dashboard from "./pages/Dashboard";
@@ -10,6 +11,7 @@ import ScenarioSimulation from "./pages/ScenarioSimulation"; // ⭐ NEW
 
 function App() {
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <Routes>
         {/* Layout wrapper */}
@@ -25,6 +27,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -50,7 +50,7 @@ const GeoRiskHeatMap = ({ selectedRegion }) => {
   };
 
   return (
-    <div className="bg-gray-900 p-4 rounded-2xl shadow-lg">
+    <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/90 p-4 shadow-glass-lg backdrop-blur-xl">
       <ComposableMap projectionConfig={{ scale: 160 }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
@@ -93,7 +93,7 @@ const GeoRiskHeatMap = ({ selectedRegion }) => {
 
       {/* TOOLTIP PANEL */}
       {tooltip && (
-        <div className="mt-4 bg-gray-800 p-4 rounded-xl text-sm text-white">
+        <div className="mt-4 rounded-xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-200 backdrop-blur-md">
           <p className="font-bold mb-2">{tooltip.name}</p>
           <p>Final Risk: {tooltip.risk}</p>
           <p>Supply: {tooltip.supply}</p>

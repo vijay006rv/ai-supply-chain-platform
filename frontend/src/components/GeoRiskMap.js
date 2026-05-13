@@ -6,8 +6,9 @@ export default function GeoRiskMap() {
   const [geo, setGeo] = useState([]);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/geo-risk")
-      .then(res => {
+    axios
+      .get("http://127.0.0.1:8000/geo-risk")
+      .then((res) => {
         setGeo(res.data.items || res.data || []);
       })
       .catch(() => {});
@@ -20,8 +21,8 @@ export default function GeoRiskMap() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-4">
-      <h3 className="text-lg font-semibold mb-4">
+    <div className="overflow-hidden rounded-xl border border-slate-200/60 bg-white/50 p-4 shadow-inner dark:border-white/10 dark:bg-slate-950/40 sm:p-5">
+      <h3 className="mb-4 font-display text-base font-semibold text-slate-800 dark:text-slate-100">
         Global Geopolitical Risk Map
       </h3>
 
@@ -29,10 +30,9 @@ export default function GeoRiskMap() {
         center={[20, 0]}
         zoom={2}
         style={{ height: "450px", width: "100%" }}
+        className="z-0"
       >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {geo.map((g, index) => (
           <CircleMarker

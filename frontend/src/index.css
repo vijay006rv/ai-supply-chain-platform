@@ -2,6 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100;
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-screen font-sans text-slate-800 dark:text-slate-100;
+    background-color: #f4f7fb;
+    background-image: radial-gradient(
+        ellipse 120% 80% at 100% -10%,
+        rgba(34, 211, 238, 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 80% 60% at 0% 100%,
+        rgba(99, 102, 241, 0.08),
+        transparent 45%
+      ),
+      linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  }
+
+  html.dark body {
+    background-color: #0a0f1a;
+    background-image: radial-gradient(
+        ellipse 100% 70% at 50% -20%,
+        rgba(34, 211, 238, 0.08),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 50% at 100% 80%,
+        rgba(99, 102, 241, 0.06),
+        transparent 50%
+      ),
+      linear-gradient(180deg, #0a0f1a 0%, #0f172a 100%);
+  }
+
+  ::selection {
+    @apply bg-cyan-500/30 text-slate-900 dark:text-white;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-size: 48px 48px;
+    @apply bg-grid-faint;
+  }
+
+  .glass-panel {
+    @apply border border-white/40 bg-white/70 shadow-glass backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60 dark:shadow-glass-lg;
+  }
+
+  .glass-sidebar {
+    @apply border-r border-white/10 bg-slate-950/85 shadow-glass-lg backdrop-blur-2xl dark:bg-slate-950/90;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent;
+  }
+
+  .page-enter {
+    animation: fade-up 0.45s ease-out both;
+  }
+}
+
+/* Leaflet: keep map readable inside glass cards */
+.leaflet-container {
+  @apply rounded-xl border border-slate-200/80 dark:border-slate-700/80;
+  font-family: inherit;
 }
