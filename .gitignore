@@ -38,9 +38,7 @@ env/
 # Environment variables
 .env
 
-# Data files
-data/
-*.csv
+
 
 # Models
 *.pkl
